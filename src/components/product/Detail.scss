@@ -1,0 +1,65 @@
+//css를 프로그래밍언어 처럼 사용하기 위한 문법
+
+//변수 선언 : $ 뒤에 사용할 변수명 선언
+$mainColor : #ff0000;
+
+body{
+    margin:0;
+}
+
+div{
+    box-sizing:border-box;
+}
+
+a{
+	text-decoration: none;	
+	cursor:pointer;
+}
+
+.red{
+    color:$mainColor
+}
+
+.btn{
+    margin:5px;
+}
+
+//nesting 문법 (후손선택자와 동일) 
+/* div.container{
+    h4{
+        color:blue;
+    }
+   
+    p{
+       color:green; 
+    }
+} */
+
+//scss의 함수, 매개변수도 전달 할 수 있다.
+@mixin fncAlert($bgColor, $color){
+    background-color: $bgColor;
+    color:$color;
+    padding:20px;   
+    margin:auto;
+    margin-top:20px;
+    border-radius: 5px;
+    max-width:500px;
+    width:100%;
+}
+
+.my-alert{
+    //@mixin 으로 만든 sass 함수를 호출
+    @include fncAlert(red,white);   
+}
+
+.my-alert2{
+    //다른 css 선택자의 내용을 상속 받을 수도 있다.
+    @extend .my-alert;
+    border: 5px solid yellow;
+}
+
+.my-alert p{
+    margin-bottom: 0px;
+}
+
+
