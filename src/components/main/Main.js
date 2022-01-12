@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Card from "../product/Card.js";
+import {stockContext} from "../app/App"
 
-function App(props) {
-  let shoes = props.shoes;
+function App() {
+
+  let [shoes, setShoes] = useContext(stockContext);
+
   return (
     <div className="App">
       <div className="position-relative overflow-hidden p-3 p-md-5 text-center main">
@@ -40,7 +43,7 @@ function App(props) {
                   e.img = "https://codingapple1.github.io/shop/shoes1.jpg";
                   shoesTemp.push(e);
                 })
-                props.setShoes(shoesTemp);
+                setShoes(shoesTemp);
               });
           }}
         >

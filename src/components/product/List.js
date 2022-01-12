@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Card from "./Card.js";
+import {stockContext} from "../app/App"
 
-function App(props) {
-  let shoes = props.shoes;
+function App() {
+  let [shoes, setShoes] = useContext(stockContext);
+
   return (
     <div className="container">
       <div className="row">

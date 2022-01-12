@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Detail.scss"
+import {stockContext} from "../app/App"
 
-function App(props) {
-  
+function App() {
+
+  let [shoes, setShoes] = useContext(stockContext);
+
   //useEffect는 여러개 작성가능
   //작성한 순서대로 실행된다.
   useEffect(()=>{
@@ -35,14 +38,14 @@ function App(props) {
       <div className="row">
         <div className="col-md-6">
           <img
-            src={props.shoes[id].img}
+            src={shoes[id].img}
             width="100%"
           />
         </div>
         <div className="col-md-6 mt-4">
-          <h4 className="pt-5 red">{props.shoes[id].title}</h4>
-          <p>{props.shoes[id].content}</p>
-          <p>{props.shoes[id].price}원</p>
+          <h4 className="pt-5 red">{shoes[id].title}</h4>
+          <p>{shoes[id].content}</p>
+          <p>{shoes[id].price}원</p>
           <button className="btn btn-danger" >주문하기</button>           
           <button className="btn btn-primary" onClick={()=>{
             navigate(-1);
